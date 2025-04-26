@@ -1,11 +1,19 @@
-extends Node
+class_name Entity
+extends Node2D
 
+signal died
+@export var max_hp := 100.0
+var hp := max_hp:
+	set = set_hp
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func take_damage(damage : float) -> void:
+	hp -= damage
+	if hp <= 0:
+		die()
 
+func die() -> void:
+	queue_free()
+	died.emit()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func set_hp(new_hp):
 	pass

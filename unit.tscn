@@ -1,9 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b705opw0eonap"]
+[gd_scene load_steps=9 format=3 uid="uid://b705opw0eonap"]
 
 [ext_resource type="Script" uid="uid://bpixh1wlciobu" path="res://Scripts/unit.gd" id="1_btf8p"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_btf8p"]
-radius = 23.0868
 
 [sub_resource type="Gradient" id="Gradient_btf8p"]
 offsets = PackedFloat32Array(0, 0.706522, 1)
@@ -31,6 +28,13 @@ color = Color(1, 0.827451, 0.372549, 1)
 color_ramp = SubResource("GradientTexture1D_ctwoc")
 hue_variation_min = -0.05
 hue_variation_max = 0.05
+collision_mode = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_btf8p"]
+radius = 23.0868
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_btf8p"]
+polygon = PackedVector2Array(-25, -40, 55, 1, -26, 36)
 
 [node name="Unit" type="Area2D"]
 script = ExtResource("1_btf8p")
@@ -41,6 +45,17 @@ color = Color(0.114225, 0.261724, 0.421456, 1)
 offset = Vector2(16, 1)
 polygon = PackedVector2Array(-42, 35, -41, -41, 41, 0)
 
+[node name="Particles" type="GPUParticles2D" parent="Polygon2D"]
+unique_name_in_owner = true
+position = Vector2(56, 1)
+emitting = false
+explosiveness = 0.2
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 2
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_1sk4h")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_btf8p")
@@ -49,22 +64,28 @@ shape = SubResource("CircleShape2D_btf8p")
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = -5.0
-offset_top = -7.0
-offset_right = 30.0
-offset_bottom = 16.0
+offset_left = -18.0
+offset_top = -11.0
+offset_right = 17.0
+offset_bottom = 12.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Particles" type="GPUParticles2D" parent="."]
-emitting = false
+[node name="AttackCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.001
 one_shot = true
-explosiveness = 0.2
-trail_enabled = true
-trail_lifetime = 0.1
-trail_sections = 2
-trail_section_subdivisions = 1
-process_material = SubResource("ParticleProcessMaterial_1sk4h")
+autostart = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -59.0
+offset_top = -75.0
+offset_right = 62.0
+offset_bottom = -46.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_btf8p")
 
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_target_reached"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

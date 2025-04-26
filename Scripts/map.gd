@@ -16,4 +16,3 @@ func _ready() -> void:
 		label.text = str(i + 1)
 		label.global_position = Vector2(20, cell_size/2 + i * cell_size)
 		add_child(label)
-	print(Cords.translate("B3"))
