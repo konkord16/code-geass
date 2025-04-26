@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgk8mdwla8in5"]
+
+[ext_resource type="Script" uid="uid://doq7l22ditux2" path="res://Scripts/input_console.gd" id="1_dqxsw"]
+
+[node name="InputConsole" type="CanvasLayer"]
+script = ExtResource("1_dqxsw")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 451.0
+grow_vertical = 0
+keep_editing_on_text_submit = true
+context_menu_enabled = false
+emoji_menu_enabled = false
+clear_button_enabled = true
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+caret_blink = true
+
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

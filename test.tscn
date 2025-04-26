@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://u5elswi6avan"]
+
+[ext_resource type="Script" uid="uid://cg2a1ypultgnl" path="res://Scripts/map.gd" id="1_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://cgk8mdwla8in5" path="res://input_console.tscn" id="1_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://b705opw0eonap" path="res://unit.tscn" id="2_6uqi0"]
+[ext_resource type="Texture2D" uid="uid://7wjydepk2u6v" path="res://Sprite-0001.png" id="3_ppyta"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ppyta"]
+vertices = PackedVector2Array(1257.05, 748.023, -960.039, 753.969, -968.953, -1133.05, 1266.94, -1144.94)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-979, -1143, 1277, -1155, 1267, 758, -970, 764)])
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_6uqi0")
+
+[node name="Unit" parent="." instance=ExtResource("2_6uqi0")]
+position = Vector2(1135, 511)
+squad = "p"
+number = "1"
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(960, 1139)
+navigation_polygon = SubResource("NavigationPolygon_ppyta")
+
+[node name="Grid" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(5, 5)
+texture = ExtResource("3_ppyta")
+offset = Vector2(256, 256)
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 512)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1152, 648)
+zoom = Vector2(0.5, 0.5)
+
+[node name="InputConsole" parent="." instance=ExtResource("1_8uh7m")]
