@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://qshod08vw6ce"]
+
+[ext_resource type="Shader" uid="uid://c5lyw46gy5ocf" path="res://grid.gdshader" id="1_ebq2e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebq2e"]
+shader = ExtResource("1_ebq2e")
+shader_parameter/resolution = Vector2(1000, 1000)
+shader_parameter/line_color = Color(0.2, 0.3, 0.5, 1)
+shader_parameter/cell_color = Color(0, 0, 0, 1)
+shader_parameter/zoom = 50.0
+shader_parameter/thickness = 2.7
+shader_parameter/brightness = 2.0
+shader_parameter/opacity = 0.5
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_65i6o"]
+
+[node name="Node2D" type="Sprite2D"]
+material = SubResource("ShaderMaterial_ebq2e")
+scale = Vector2(1000, 1000)
+texture = SubResource("PlaceholderTexture2D_65i6o")

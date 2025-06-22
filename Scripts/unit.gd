@@ -17,11 +17,11 @@ var move_target : Vector2
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready() -> void:
-	%Label.text = squad+number
+	%Name.text = squad+number
 	add_to_group(squad+number)
 	%AttackCooldown.wait_time = attack_cd
-	%ProgressBar.max_value = max_hp
-	%ProgressBar.value = hp
+	%HPBar.max_value = max_hp
+	%HPBar.value = hp
 
 func _physics_process(delta: float) -> void:
 	if shooting:
@@ -70,4 +70,4 @@ func _on_attack_cooldown_timeout() -> void:
 
 func set_hp(new_hp):
 	hp = new_hp
-	%ProgressBar.value = new_hp
+	%HPBar.value = new_hp

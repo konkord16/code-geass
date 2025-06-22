@@ -62,7 +62,7 @@ shape = SubResource("CircleShape2D_btf8p")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="Label" type="Label" parent="."]
+[node name="Name" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = -18.0
 offset_top = -11.0
@@ -77,7 +77,7 @@ wait_time = 0.001
 one_shot = true
 autostart = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="HPBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = -59.0
 offset_top = -75.0

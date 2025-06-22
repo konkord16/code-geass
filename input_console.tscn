@@ -2,17 +2,22 @@
 
 [ext_resource type="Script" uid="uid://doq7l22ditux2" path="res://Scripts/input_console.gd" id="1_dqxsw"]
 
-[node name="InputConsole" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer"]
 script = ExtResource("1_dqxsw")
 
 [node name="LineEdit" type="LineEdit" parent="."]
 unique_name_in_owner = true
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -451.0
 offset_top = -42.0
-offset_right = 451.0
+grow_horizontal = 0
 grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
 keep_editing_on_text_submit = true
 context_menu_enabled = false
 emoji_menu_enabled = false
